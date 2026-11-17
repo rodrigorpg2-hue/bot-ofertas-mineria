@@ -1,0 +1,14 @@
+services:
+  - type: cron
+    name: bot-ofertas-mineria
+    runtime: python
+    schedule: "0 11 * * *"   # 08:00 hora de Chile (verano)
+    buildCommand: pip install -r requirements.txt
+    startCommand: python buscador_ofertas_telegram.py
+    envVars:
+      - key: TELEGRAM_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: LINKEDIN_ANTIGUEDAD
+        value: r86400
